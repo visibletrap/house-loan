@@ -13,5 +13,5 @@
 
 (defn csv [date-string]
   (if-let [out (get-csv (url date-string))]
-    out
+    [date-string out]
     (csv (d/yesterday-string date-string))))
