@@ -15,6 +15,7 @@
 (defn get-data [name from nmonth]
   (map #(date-mlr name %) (map s/csv (take nmonth (d/range-last-date-of-month-string from)))))
 
-(get-data "Bangkok Bank" "31012012" 12)
-(get-data "Bank of Ayudhya" "31012012" 12)
-(get-data "Kasikornbank" "31012012" 12)
+;; (get-data "Bangkok Bank" "31011996" 218)
+;; (get-data "Bank of Ayudhya" "31011996" 218)
+(get-data "Thai Farmers Bank" "31011996" 87)
+;; (get-data "Kasikornbank" "30042003" 131)
