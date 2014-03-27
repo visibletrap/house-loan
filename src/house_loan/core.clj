@@ -1,4 +1,7 @@
 (ns house-loan.core
-  (:require [house-loan.date :as d]))
+  (:require [house-loan.date :as d]
+            [house-loan.source :as s]
+            [clojure-csv.core :as c]))
 
-(take 2 (d/range-last-date-of-month-string "31011996"))
+
+(clojure.pprint/pprint (map s/csv (take 3 (d/range-last-date-of-month-string "31011996"))))

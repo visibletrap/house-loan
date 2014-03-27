@@ -1,17 +1,17 @@
 (ns house-loan.source
   (:require [org.httpkit.client :as http]
-            [clojure.string :as s]
-            [clojure-csv.core :as csv]
-            [simple-time.core :as t]))
+            [house-loan.date :as d]))
 
-(defn get-csv [url]
+(defn- get-csv [url]
   (let [{ :keys [status body] } @(http/get url)]
     (if (= status 200)
       (slurp (:body @(http/get url)) :encoding "tis-620")
-      "")))
+      nil)))
 
-(def url "http://www.bot.or.th/Thai/Statistics/FinancialMarkets/InterestRate/InterestRate_EN_CSV/IN_CSV_LNE_27032014.CSV")
+(defn- url [date-string]
+  (str "http://www.bot.or.th/Thai/Statistics/FinancialMarkets/InterestRate/InterestRate_EN_CSV/IN_CSV_LNE_" date-string ".CSV"))
 
-;; (csv/parse-csv (get-csv url) :delimiter \|)
-
-
+(defn csv [date-string]
+  (if-let [out (get-csv (url date-string))]
+    out
+    (csv (d/yesterday-string date-string))))
