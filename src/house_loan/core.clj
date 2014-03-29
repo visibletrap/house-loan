@@ -12,10 +12,12 @@
 (defn- csvs-to-mlrs [name csvs]
   (map #(e/mlr name %) csvs))
 
+(defrecord Mlr [date value])
+
 (defn get-data [name from nmonth]
   (let [dates (date-string-list from nmonth)
         mlrs (csvs-to-mlrs name (dates-to-csvs dates))]
-    (map vector dates mlrs)))
+    (map ->Mlr dates mlrs)))
 
 (get-data "Bangkok Bank" "31012014" 1)
 ;; (get-data "Bangkok Bank" "31011996" 218)
