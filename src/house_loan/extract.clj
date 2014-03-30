@@ -10,4 +10,5 @@
 (defn mlr [name csv]
   (let [rows (c/parse-csv csv :delimiter \|)
         match-record (match-row name rows)]
-    (last (take 3 match-record))))
+    (read-string (last (take 3 match-record)))))
+

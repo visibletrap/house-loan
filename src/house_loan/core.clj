@@ -19,7 +19,7 @@
         mlrs (csvs-to-mlrs name (dates-to-csvs dates))]
     (map ->Mlr dates mlrs)))
 
-(get-data "Bangkok Bank" "31012014" 1)
+;; (get-data "Bangkok Bank" "31012014" 1)
 ;; (get-data "Bangkok Bank" "31011996" 218)
 ;; (get-data "Bank of Ayudhya" "31011996" 218)
 ;; (get-data "Thai Farmers Bank" "31011996" 87)
